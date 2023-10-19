@@ -18,3 +18,4 @@ oddEven(int num) - prints whether the num is odd or even
 lcm(int num) - prints the lcm of the num
 gcf(int num) - prints the gcf of the num
 
+test
