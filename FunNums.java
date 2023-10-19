@@ -37,6 +37,15 @@ public class FunNums {
     }
   }
 
+  /*
+   * lcm is a static method that prints out a statement that tells the user the least common multiple of the two numbers that they inputted
+   * @param num1 - the first number that the user inputs that is used to find the lcm
+   * @param num2 - the second number that the user inputs that is used to find the lcm
+   */
+  public static void lcm(int num1, int num2){
+    
+  }
+
   //Main
   public static void main(String[] args) {
     //System.out.println("test");
