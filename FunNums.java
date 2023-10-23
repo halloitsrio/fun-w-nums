@@ -57,7 +57,7 @@ public class FunNums {
               System.out.println("The LCM of " + num1 + " and " + num2 + " is " + count);
               break; // Found the LCM, exit the loop
           }
-          count++;
+          count += smallerNumber;
       }
   }
 
