@@ -86,8 +86,11 @@ public class FunNums {
     String input = sc.nextLine();
 
     try {
+      if (!input.isEmpty()) {
+        sc.close();
+        check_num();
+      }
       int num = Integer.valueOf(input);
-      //num = Integer.intValue(num);
       sc.close();
       return num;
     }
@@ -96,6 +99,34 @@ public class FunNums {
       sc.close();
       check_num();
     }
+    return 0;
+  }
+
+  public static int[] check_nums() {
+    Scanner sc = new Scanner(System.in);
+    String input = sc.nextLine();
+
+    try {
+      if (!input.isEmpty()) {
+        sc.close();
+        check_num();
+      }
+      int sep_index = input.indexOf(",");
+      int num1 = Integer.valueOf(input.substring(0, sep_index));
+      int num2 = Integer.valueOf(input.substring(sep_index + 1));
+      int[] nums = new int[2];
+      nums[0] = num1;
+      nums[1] = num2;
+      sc.close();
+      return nums;
+    }
+    catch(NumberFormatException e) {
+      System.out.println("Invalid input. Try again");
+      sc.close();
+      check_nums();
+    }
+
+    return [1, 2];
   }
 
   //Main
@@ -103,28 +134,36 @@ public class FunNums {
     System.out.println("Welcome to FunNums! Please follwo along the prompts to use the program. Have fun!\n");
     Scanner sc = new Scanner(System.in);
     boolean play = true;
-    while (true) {
+    while (play) {
       System.out.println("Please choose a function to use :\n (a) is prime\n (b) odd or even\n (c) LCM (least common multiple\n (d) GCF (greatest common factor)\n {e} Quit");
       System.out.println("/nPlease input on of the following letters to make your selection: a, b, c, or d");
       String choice = sc.nextLine();
+      int inputnum;
+      int[] inputnums = new int[2];
 
       switch (choice) {
         case "a" :
           System.out.println("You have chosen is prime\n Please input 1 integer number");
-          int inputnum = check_num();
+          inputnum = check_num();
           isPrime(inputnum);
         case "b" :
           System.out.println("You have chosen is odd or even");
+          inputnum = check_num();
+          oddEven(inputnum);
         case "c" :
           System.out.println("You have chosen is LCM");
+          inputnums = check_nums();
+          lcm(inputnums[0], inputnums[1]);
         case "d" :
           System.out.println("You have chosen is GCF");
+          inputnums = check_nums();
+          gcf(inputnums[0], inputnums[1]);
         case "e" :
           System.out.println("Thank you to using this method! Have fun with nums!");
           play = false;
       }
-      sc.close();
     }
+    sc.close();
     
   }
 }
