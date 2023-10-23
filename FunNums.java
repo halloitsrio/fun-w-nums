@@ -2,6 +2,7 @@
  * add comments on authors, data, version, & purpose 
  * need to add import for scanner & anything else that is needed
 */
+import java.util.Scanner;
 
 public class FunNums {
   
@@ -76,20 +77,54 @@ public class FunNums {
       System.out.println(num1);
   }
 
+  /*
+   * checknum checks if the input is an integer and required the user to enter a valid input to end
+   * @param num - number inputed by the user and is being checked
+   */
+  public static int check_num() {
+    Scanner sc = new Scanner(System.in);
+    String input = sc.nextLine();
+
+    try {
+      int num = Integer.valueOf(input);
+      //num = Integer.intValue(num);
+      sc.close();
+      return num;
+    }
+    catch(NumberFormatException e){
+      System.out.println("Invalid input. Try again");
+      sc.close();
+      check_num();
+    }
+  }
 
   //Main
   public static void main(String[] args) {
-    //System.out.println("test");
-    isPrime(13);
-    isPrime(12);
-    oddEven(13);
-    oddEven(12);
-    int num1 = 12;
-    int num2 = 18;
-    lcm(num1, num2);
-    num1 = 24;
-    num2 = 18;
-    gcf(num1, num2);
+    System.out.println("Welcome to FunNums! Please follwo along the prompts to use the program. Have fun!\n");
+    Scanner sc = new Scanner(System.in);
+    boolean play = true;
+    while (true) {
+      System.out.println("Please choose a function to use :\n (a) is prime\n (b) odd or even\n (c) LCM (least common multiple\n (d) GCF (greatest common factor)\n {e} Quit");
+      System.out.println("/nPlease input on of the following letters to make your selection: a, b, c, or d");
+      String choice = sc.nextLine();
 
+      switch (choice) {
+        case "a" :
+          System.out.println("You have chosen is prime\n Please input 1 integer number");
+          int inputnum = check_num();
+          isPrime(inputnum);
+        case "b" :
+          System.out.println("You have chosen is odd or even");
+        case "c" :
+          System.out.println("You have chosen is LCM");
+        case "d" :
+          System.out.println("You have chosen is GCF");
+        case "e" :
+          System.out.println("Thank you to using this method! Have fun with nums!");
+          play = false;
+      }
+      sc.close();
+    }
+    
   }
 }
